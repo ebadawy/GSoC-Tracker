@@ -4,17 +4,30 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ site.baseurl }}/javascripts/bootstrap.min.js"></script>
+    <script src="{{ site.baseurl }}/javascripts/jquery.session.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
+
+    //assume that menu is open by default
+    if($.session.get("sidbar") === "undefined") 
+        $.session.set("sidbar", "open")
+    else if ($.session.get("sidbar") === "close")
+        $("#wrapper").toggleClass("toggled");
+
     var menu_toggle = $("#menu-toggle");
+    
     menu_toggle.click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-        if(menu_toggle.text() === "<< Recent Posts") 
-          menu_toggle.text(">> Recent Posts");
-        else 
-          menu_toggle.text("<< Recent Posts");
+        if($.session.get("sidbar") === "open") {
+            menu_toggle.text(">> Recent Posts");
+            $.session.set("sidbar", "close")
+        }
+        else {
+            menu_toggle.text("<< Recent Posts");
+            $.session.set("sidbar", "open")
+        }
     });
     </script>
 
