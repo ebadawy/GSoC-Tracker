@@ -2,7 +2,7 @@
 title: GSoC '15 Tracker
 email: ehalbadawy93@gmail.com
 description: > # this blog is dedicated to track GSoC prgress
-  this blog is dedicated to track GSoC prgress and I'll post the status of each weak here.
+  this blog is dedicated to track GSoC prgress.
 baseurl: "/GSoC-Tracker" # the subpath of your site, e.g. /blog/
 url: "http://ehab93.github.io" # the base hostname & protocol for your site
 github_username:  ehab93
