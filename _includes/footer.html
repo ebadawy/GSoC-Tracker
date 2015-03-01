@@ -9,26 +9,32 @@
     <!-- Menu Toggle Script -->
     <script>
 
-    //assume that menu is open by default
-    if($.session.get("sidbar") === "undefined") 
-        $.session.set("sidbar", "open")
-    else if ($.session.get("sidbar") === "close")
-        $("#wrapper").toggleClass("toggled");
+    (function(){
 
-    var menu_toggle = $("#menu-toggle");
-    
-    menu_toggle.click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-        if($.session.get("sidbar") === "open") {
-            menu_toggle.text(">> Recent Posts");
-            $.session.set("sidbar", "close")
-        }
-        else {
-            menu_toggle.text("<< Recent Posts");
-            $.session.set("sidbar", "open")
-        }
-    });
+      var menu_toggle = $("#menu-toggle");
+      //assume that menu is open by default
+      if($.session.get("sidbar") === "undefined"){
+          $.session.set("sidbar", "open");
+          menu_toggle.text("<< Recent Posts");
+      }
+      else if ($.session.get("sidbar") === "close") {
+          $("#wrapper").toggleClass("toggled");
+          menu_toggle.text(">> Recent Posts");
+      }
+
+      menu_toggle.click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+          if($.session.get("sidbar") === "open") {
+              menu_toggle.text(">> Recent Posts");
+              $.session.set("sidbar", "close")
+          }
+          else {
+              menu_toggle.text("<< Recent Posts");
+              $.session.set("sidbar", "open")
+          }
+      });
+    }());
     </script>
 
   <div class="wrapper">
